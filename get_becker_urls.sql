@@ -1,0 +1,2 @@
+-- using DuckDB to query 250GB of parquet seamlessly
+create table becker as (select filename, file_row_number, * exclude (filename, file_row_number) from read_parquet('./download/**/*.parquet', filename=true, file_row_number=true) where url_host_name ilike '%beckershospitalreview.com%');
